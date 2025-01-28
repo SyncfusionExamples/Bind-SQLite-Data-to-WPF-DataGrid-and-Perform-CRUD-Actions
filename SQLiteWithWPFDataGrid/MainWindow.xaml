@@ -1,0 +1,78 @@
+﻿<Window x:Class="SQLGrid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLGrid"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Employee Management"
+        Height="600"
+        Width="1000"
+        Background="#F8F8F8">
+    <Window.Resources>
+        <local:EmployeeViewModel x:Key="viewModel"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource viewModel}" Margin="10">
+
+                
+                <syncfusion:SfDataGrid x:Name="sfDataGrid"
+                                       AutoGenerateColumns="True"
+                                       Grid.Row="1"
+                                       Margin="10"
+                                       BorderBrush="#D3D3D3"
+                                       AllowDraggingColumns="True"
+                                       BorderThickness="1"
+                                       SelectionMode="Single"
+                                       AllowResizingColumns="True"
+                                       AllowSorting="True"
+                                       HeaderRowHeight="35"
+                                       RowHeight="30">
+                    <!-- Context Menu -->
+                    <syncfusion:SfDataGrid.RecordContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Add" Click="OnAddMenuClick">
+                                <MenuItem.Icon>
+                                    <Viewbox Width="22" Height="22">
+                                        <Canvas Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Path Data="M6,0 L8,0 8,6.0000001 14,6.0000001 14,8 8,8 8,14 6,14 6,8 0,8 0,6.0000001 6,6.0000001 z" 
+                                             Stroke="Black" 
+                                             StrokeThickness="1.5" />
+                                </Canvas>
+                                    </Viewbox>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                    <!-- Edit Menu Item -->
+                    <MenuItem Header="Edit" Click="OnEditMenuClick">
+                        <MenuItem.Icon>
+                            <Viewbox Width="22" Height="22" >
+                                <Canvas Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <!-- Pencil Icon (Edit) -->
+                                    <Path Data="M9.4320068,3.0419922 L12.958008,6.5679932 3.526001,16 0,16 0,12.473999 z M12.869995,0 C13.134033,0 13.355042,0.088989258 13.531006,0.26501465 L15.734985,2.4689941 C15.911011,2.6450195 16,2.8660278 16,3.1300049 16,3.3950195 15.911011,3.6149902 15.734985,3.7910156 L13.884033,5.6430054 10.358032,2.1170044 12.208984,0.26501465 C12.38501,0.088989258 12.606018,0 12.869995,0 z"
+                                          Stroke="Black" 
+StrokeThickness="1.5" 
+                          />
+                                </Canvas>
+                            </Viewbox>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <!-- Delete Menu Item -->
+                    <MenuItem Header="Delete" Click="OnDeleteMenuClick">
+                        <MenuItem.Icon>
+                            <Viewbox Width="22" Height="22">
+                                <Canvas Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <!-- Trash Bin Icon (Delete) -->
+                                    <Path Data="M10.586002,0 L12.000003,1.4140021 7.413983,5.9987224 12,10.583006 10.586,11.997005 5.9997823,7.4125217 1.4140045,11.997 3.0398377E-06,10.582997 4.5855133,5.9987873 0,1.4150074 1.414,0.0010076167 5.9997136,4.5849875 z"
+                                                                                    Stroke="Black" 
+StrokeThickness="1.5" />
+                                </Canvas>
+                            </Viewbox>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+                    </syncfusion:SfDataGrid.RecordContextMenu>
+                </syncfusion:SfDataGrid>
+            </Grid>
+</Window>
